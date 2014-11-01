@@ -17,19 +17,21 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class SampleGridViewActivity extends PicassoSampleActivity {
+    public final static String STREAM_INDEX = "stream_index";
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.sample_gridview_activity);
+        setContentView(R.layout.all_stream_with_button);
 
-        GridView gv = (GridView) findViewById(R.id.grid_view);
+        GridView gv = (GridView) findViewById(R.id.gridphoto);
         gv.setAdapter(new SampleGridViewAdapter(this));
         gv.setOnScrollListener(new SampleScrollListener(this));
 
         gv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(SampleGridViewActivity.this, position + "#Selected",
+            Toast.makeText(SampleGridViewActivity.this, position + "#Selected",
                                     Toast.LENGTH_SHORT).show();
+            startSingleStreamActivity(position);
             }
 
 
@@ -43,4 +45,11 @@ public class SampleGridViewActivity extends PicassoSampleActivity {
 
 
     }
+
+    public void startSingleStreamActivity(int position) {
+        Intent intent = new Intent(this, SingleStreamActivity.class);
+        intent.putExtra(STREAM_INDEX, position);
+        startActivity(intent);
+    }
+
 }

@@ -41,10 +41,13 @@
             android:label="@string/title_activity_sample_grid_view" >
         </activity>
 
-        <!--<activity android:name=".SampleContactsActivity"/>-->
-        <activity android:name=".SampleGalleryActivity"/>
-        <!--<activity android:name=".SampleListDetailActivity"/>-->
-
+        <!-- <activity android:name=".SampleContactsActivity"/> -->
+        <activity android:name=".SampleGalleryActivity" />
+        <!-- <activity android:name=".SampleListDetailActivity"/> -->
+        <activity
+            android:name=".SingleStreamActivity"
+            android:label="@string/title_activity_single_stream" >
+        </activity>
     </application>
 
 </manifest>

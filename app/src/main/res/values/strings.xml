@@ -14,5 +14,6 @@
     <string name="sample_widget">Picasso Sample Widget</string>
     <string name="sample_notification">Picasso Sample Notification</string>
     <string name="select_picture">Select Picture</string>
+    <string name="title_activity_single_stream">SingleStreamActivity</string>
 
 </resources>
