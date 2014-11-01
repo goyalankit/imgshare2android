@@ -12,11 +12,13 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class SampleGridViewActivity extends PicassoSampleActivity {
+    public final static String SEARCH_TERM = "search_term";
     public final static String STREAM_INDEX = "stream_index";
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +45,17 @@ public class SampleGridViewActivity extends PicassoSampleActivity {
 //            }
         });
 
+    }
 
+    public void searchBtnHandler(View target) {
+
+        Intent intent = new Intent(this, SearchActivity.class);
+        EditText editText = (EditText) findViewById(R.id.search_term);
+        String message = editText.getText().toString();
+        intent.putExtra(SEARCH_TERM, message);
+        startActivity(intent);
+        Toast.makeText(SampleGridViewActivity.this, "Search Button Clicked with message = " + message,
+                Toast.LENGTH_SHORT).show();
     }
 
     public void startSingleStreamActivity(int position) {
@@ -51,5 +63,4 @@ public class SampleGridViewActivity extends PicassoSampleActivity {
         intent.putExtra(STREAM_INDEX, position);
         startActivity(intent);
     }
-
 }

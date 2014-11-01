@@ -41,6 +41,10 @@
             android:label="@string/title_activity_sample_grid_view" >
         </activity>
 
+        <activity
+            android:name=".SearchActivity"
+            android:label="Search" >
+        </activity>
         <!-- <activity android:name=".SampleContactsActivity"/> -->
         <activity android:name=".SampleGalleryActivity" />
         <!-- <activity android:name=".SampleListDetailActivity"/> -->

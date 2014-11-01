@@ -22,13 +22,13 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SingleStreamActivity extends PicassoSampleActivity {
+public class SearchActivity extends PicassoSampleActivity {
     List<StreamUrls> streamUrlsList = new ArrayList<StreamUrls>();
     Button loadMore;
 
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.sample_gridview_activity);
+        setContentView(R.layout.search_view);
 
         Intent intent = getIntent();
         int position = intent.getIntExtra(SampleGridViewActivity.STREAM_INDEX, 0);
@@ -37,12 +37,12 @@ public class SingleStreamActivity extends PicassoSampleActivity {
 
     public void setGridView() {
         GridView gv = (GridView) findViewById(R.id.grid_view);
-        gv.setAdapter(new SingleStreamAdaptor(SingleStreamActivity.this, streamUrlsList));
+        gv.setAdapter(new SingleStreamAdaptor(SearchActivity.this, streamUrlsList));
 
         gv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(SingleStreamActivity.this, position + "#Selected",
+                Toast.makeText(SearchActivity.this, position + "#Selected",
                         Toast.LENGTH_SHORT).show();
 
             }
@@ -52,7 +52,7 @@ public class SingleStreamActivity extends PicassoSampleActivity {
     }
 
     public void searchBtnHandler(View target) {
-        Toast.makeText(SingleStreamActivity.this, "Search Button Clicked.",
+        Toast.makeText(SearchActivity.this, "Search Button Clicked.",
                 Toast.LENGTH_SHORT).show();
     }
 

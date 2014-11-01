@@ -26,17 +26,17 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-        <EditText android:id="@+id/search_term"
-            android:layout_height="wrap_content"
-            android:layout_width="fill_parent"
-            android:hint="Find Streams" />
+            <EditText android:id="@+id/search_term"
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:hint="Find Streams" />
 
-        <Button
-            android:id="@+id/searchbtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="search"
-            android:onClick="searchBtnHandler"/>
+            <Button
+                android:id="@+id/searchbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="search"
+                android:onClick="searchBtnHandler"/>
 
         </LinearLayout>
     </LinearLayout>
