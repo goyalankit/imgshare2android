@@ -39,7 +39,7 @@ public class AuthActivity extends Activity {
             }
 
             Intent intent = new Intent(this, AuthHandler.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
             intent.putExtra("account", selectedAccount);
             startActivity(intent);
         }

@@ -81,7 +81,7 @@ public class AuthHandler extends Activity {
     public void startViewAllStreamsActivity() {
         //Intent intent = new Intent(this, SampleGridViewActivity.class);
         Intent intent = new Intent(this, ViewAllStreamsActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
         intent.putExtra(AUTH_RESULT, "Successful");
         startActivity(intent);
     }

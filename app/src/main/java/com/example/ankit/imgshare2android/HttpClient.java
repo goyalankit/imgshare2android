@@ -13,16 +13,13 @@ import com.loopj.android.http.SyncHttpClient;
 
 import org.apache.http.client.CookieStore;
 
-import java.io.File;
-import java.net.URL;
-
 /**
  * Created by ankit on 10/26/14.
  * Documentation:
  * http://loopj.com/android-async-http/
  */
 public class HttpClient {
-    private static final String BASE_URL = "http://imgshare2.appspot.com/";
+    private static final String BASE_URL = "http://imgshare2.appspot.com/"; //"http://localhost:8080/";//
     private static final String LOG_TAG = "HttpClient";
     private static AsyncHttpClient client;
     private static AsyncHttpClient syncClient;
@@ -73,9 +70,6 @@ public class HttpClient {
             }
         }).start();
     }
-
-
-
 
 
     private static String getAbsoluteUrl(String relativeUrl) {

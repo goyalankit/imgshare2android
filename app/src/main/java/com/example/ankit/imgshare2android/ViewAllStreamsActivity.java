@@ -30,15 +30,6 @@ import java.util.List;
 
 public class ViewAllStreamsActivity extends Activity {
 
-//    List<Stream> subStreams = new ArrayList<Stream>();
-//    List<Stream> ownStreams = new ArrayList<Stream>();
-
-
-
-
-//    private GridView gridView;
-//    private GridViewAdaptor customGridAdapter;
-
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -51,29 +42,6 @@ public class ViewAllStreamsActivity extends Activity {
         }
     }
 
-    /*private ArrayList getData() {
-        final ArrayList imageItems = new ArrayList();
-
-
-        for (final Stream stream : CachedStreams.ownStreams) {
-            HttpClient.getBinary(stream.coverImageUrl, null, new FileAsyncHttpResponseHandler(this) {
-                @Override
-                public void onFailure(int statusCode, Header[] headers, Throwable throwable, File file) {
-
-                }
-
-                @Override
-                public void onSuccess(int statusCode, Header[] headers, File file) {
-                    Bitmap myBitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
-                    imageItems.add(new ImageItem(myBitmap, "title"));
-                }
-            });
-        }
-
-        return imageItems;
-
-    }
-*/
     public void getManageContents() throws JSONException{
         HttpClient.get("view.json", null, new JsonHttpResponseHandler() {
             @Override
@@ -101,29 +69,15 @@ public class ViewAllStreamsActivity extends Activity {
                     CachedStreams.allStreams.addAll(CachedStreams.ownStreams);
                     CachedStreams.allStreams.addAll(CachedStreams.subStreams);
 
-//                    gridView = (GridView) findViewById(R.id.gridView);
-//                    customGridAdapter = new GridViewAdaptor(ViewAllStreamsActivity.this, R.layout.row_grid, getData());
-//                    gridView.setAdapter(customGridAdapter);
-//
-//                    gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                        public void onItemClick(AdapterView<?> parent, View v,
-//                                                int position, long id) {
-//                            Toast.makeText(ViewAllStreamsActivity.this, position + "#Selected",
-//                                    Toast.LENGTH_SHORT).show();
-//                        }
-//
-//                    });
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 } finally {
                     Intent intent = new Intent(ViewAllStreamsActivity.this, SampleGridViewActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    //intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                     startActivity(intent);
                 }
             }
         });
-
     }
 
     @Override

@@ -15,5 +15,22 @@
     <string name="sample_notification">Picasso Sample Notification</string>
     <string name="select_picture">Select Picture</string>
     <string name="title_activity_single_stream">SingleStreamActivity</string>
+    <string name="album_name">imgshare</string>
+    <string name="cannot">cannot</string>
+    <string name="btnIntend">button 1</string>
+    <string name="btnIntendS">Use Camera</string>
+    <string name="btnIntendV">button V</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_example">Example action</string>
+
+
+    <!-- Fragment section titles -->
+    <string name="title_section1">Simple Camera Intent</string>
+    <string name="title_section2">Photo Gallery Using Loaders</string>
+    <string name="title_section3">Image Picker</string>
+    <string name="title_section4">Native Camera</string>
+    <string name="title_section5">Horizontal Gallery</string>
 
 </resources>

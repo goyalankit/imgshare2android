@@ -1,10 +1,8 @@
 package com.example.ankit.imgshare2android;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -16,23 +14,35 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.apache.http.Header;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SingleStreamActivity extends PicassoSampleActivity {
+public class SingleStreamActivity extends FragmentActivity {
     List<StreamUrls> streamUrlsList = new ArrayList<StreamUrls>();
     Button loadMore;
 
+    public static final String STREAM_NAME = "stream_name";
+    public static final String STREAM_ID = "stream_id";
+
+    String stream_id;
+    String stream_name;
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sample_gridview_activity);
 
         Intent intent = getIntent();
         int position = intent.getIntExtra(SampleGridViewActivity.STREAM_INDEX, 0);
-        getImageUrlsForStream(position);
+        if (intent.getStringExtra(SearchActivity.BY_ID) == "true") {
+            stream_id = intent.getStringExtra(SearchActivity.STREAM_ID);
+            stream_name = intent.getStringExtra(SearchActivity.STREAM_NAME);
+        } else {
+            Stream stream = CachedStreams.allStreams.get(position);
+            stream_id = stream.id;
+            stream_name = stream.name;
+        }
+        getImageUrlsForStream();
     }
 
     public void setGridView() {
@@ -47,8 +57,6 @@ public class SingleStreamActivity extends PicassoSampleActivity {
 
             }
         });
-        loadMore = (Button) findViewById(R.id.searchbtn);
-        loadMore.setVisibility(View.VISIBLE);
     }
 
     public void searchBtnHandler(View target) {
@@ -56,18 +64,22 @@ public class SingleStreamActivity extends PicassoSampleActivity {
                 Toast.LENGTH_SHORT).show();
     }
 
-    public void getImageUrlsForStream(int position) {
-        Stream stream = CachedStreams.allStreams.get(position);
-        HttpClient.get("stream/view.json?id=" + stream.id, null, new JsonHttpResponseHandler() {
+    public void uploadImageBtn(View target) {
+        Intent intent = new Intent(SingleStreamActivity.this, PhotoIntentActivity.class);
+        intent.putExtra(STREAM_ID, stream_id);
+        intent.putExtra(STREAM_NAME, stream_name);
+
+        startActivity(intent);
+    }
+
+    public void getImageUrlsForStream() {
+        HttpClient.get("stream/view.json?id=" + stream_id, null, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response){
-
                 Gson gson = new Gson();
-
 
                 try {
                     JSONArray resultArray = (JSONArray)response.get("result");
-
 
                     for (int i = 0; i < resultArray.length(); i++) {
                         StreamUrls streamUrls = gson.fromJson(resultArray.get(i).toString(), StreamUrls.class);

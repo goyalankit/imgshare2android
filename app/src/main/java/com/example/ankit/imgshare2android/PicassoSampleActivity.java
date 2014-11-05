@@ -30,6 +30,7 @@ abstract class PicassoSampleActivity extends FragmentActivity {
         final ListView activityList = (ListView) findViewById(R.id.activity_list);
         final PicassoSampleAdapter adapter = new PicassoSampleAdapter(this);
         activityList.setAdapter(adapter);
+
         activityList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {

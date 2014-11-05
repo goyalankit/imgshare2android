@@ -38,6 +38,21 @@
             android:text="search"
             android:onClick="searchBtnHandler"/>
 
+            <Button
+                android:id="@+id/nearbybtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Search Nearby"
+                android:onClick="searchBtnHandler"/>
+
+            <Button
+                android:id="@+id/substreamsbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="My Subscibed Streams"
+                android:onClick="mySubStreamsHandler"/>
+
+
         </LinearLayout>
     </LinearLayout>
 
