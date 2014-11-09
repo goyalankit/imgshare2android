@@ -20,14 +20,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SingleStreamActivity extends FragmentActivity {
-    List<StreamUrls> streamUrlsList = new ArrayList<StreamUrls>();
+    public static List<StreamUrls> streamUrlsList = new ArrayList<StreamUrls>();;
     Button loadMore;
 
     public static final String STREAM_NAME = "stream_name";
     public static final String STREAM_ID = "stream_id";
 
+
     String stream_id;
     String stream_name;
+    public static boolean getMore = false;
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sample_gridview_activity);
@@ -60,8 +62,16 @@ public class SingleStreamActivity extends FragmentActivity {
     }
 
     public void searchBtnHandler(View target) {
-        Toast.makeText(SingleStreamActivity.this, "Search Button Clicked.",
+        getMore = true;
+        getImageUrlsForStream();
+        finish();
+        startActivity(getIntent());
+        Toast.makeText(SingleStreamActivity.this, "load more clicked.",
                 Toast.LENGTH_SHORT).show();
+    }
+
+    public void streamBtnHandler(View target) {
+
     }
 
     public void uploadImageBtn(View target) {
@@ -73,7 +83,10 @@ public class SingleStreamActivity extends FragmentActivity {
     }
 
     public void getImageUrlsForStream() {
-        HttpClient.get("stream/view.json?id=" + stream_id, null, new JsonHttpResponseHandler() {
+        if (!getMore) {
+            streamUrlsList.clear();
+        }
+        HttpClient.get("stream/view.json?id=" + stream_id +(getMore ? "&get_more=true" : ""), null, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response){
                 Gson gson = new Gson();

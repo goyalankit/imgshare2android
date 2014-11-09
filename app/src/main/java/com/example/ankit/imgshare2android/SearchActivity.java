@@ -1,11 +1,8 @@
 package com.example.ankit.imgshare2android;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -69,7 +66,11 @@ public class SearchActivity extends FragmentActivity {
     }
 
     public void setGridView() {
-        textView.setText("Found "+ searchResults.size() +" results matching your query for " + term );
+        if (nearby)
+            textView.setText("Found "+ searchResults.size() +" results matching your query for " + term + " near your location ("+latitude
+            +", "+longitude+")");
+        else
+            textView.setText("Found "+ searchResults.size() +" results matching your query for " + term );
         gv = (GridView) findViewById(R.id.gridphoto);
         //sd = new SearchAdaptor(SearchActivity.this, searchResults);
         gv.setAdapter(new SearchAdaptor(SearchActivity.this, searchResults));

@@ -5,19 +5,30 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 
 public class LoginActivity extends Activity {
 
+
+    Button button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setContentView(R.layout.login_activity);
         if (HttpClient.getCookieStore() == null) {
             Toast.makeText(this, "InvalidCookie", Toast.LENGTH_LONG).show();
-            Intent intent = new Intent(this, AuthActivity.class);
-            startActivity(intent);
+            button = (Button) findViewById(R.id.loginbtn);
+
+            button.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    Intent intent = new Intent(LoginActivity.this, AuthActivity.class);
+                    startActivity(intent);
+                }
+            });
+
         } else {
             Toast.makeText(this, "ValidCookie", Toast.LENGTH_LONG).show();
             Intent intent = new Intent(this, ViewAllStreamsActivity.class);

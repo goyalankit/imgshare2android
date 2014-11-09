@@ -10,4 +10,5 @@ public class CachedStreams {
     public static List<Stream> subStreams = new ArrayList<Stream>();
     public static List<Stream> ownStreams = new ArrayList<Stream>();
     public static List<Stream> allStreams = new ArrayList<Stream>();
+    public static List<Stream> nearbyStreams = new ArrayList<Stream>();
 }

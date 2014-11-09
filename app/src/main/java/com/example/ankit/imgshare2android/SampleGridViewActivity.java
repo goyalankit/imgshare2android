@@ -1,22 +1,13 @@
 package com.example.ankit.imgshare2android;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.view.Menu;
-import android.view.MenuItem;
-
-
-
-import android.os.Bundle;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class SampleGridViewActivity extends FragmentActivity {
@@ -69,11 +60,13 @@ public class SampleGridViewActivity extends FragmentActivity {
         intent.putExtra(NEARBY, nearby.toString());
         startActivity(intent);
         Toast.makeText(SampleGridViewActivity.this, "Search Button Clicked with message = " + message,
-                Toast.LENGTH_SHORT).show();
+                Toast.LENGTH_LONG).show();
     }
 
     public void startSingleStreamActivity(int position) {
         Intent intent = new Intent(this, SingleStreamActivity.class);
+        SingleStreamActivity.streamUrlsList.clear();
+        SingleStreamActivity.getMore = false;
         intent.putExtra(STREAM_INDEX, position);
         startActivity(intent);
     }
