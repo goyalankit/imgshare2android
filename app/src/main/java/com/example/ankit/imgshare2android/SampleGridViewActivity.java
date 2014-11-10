@@ -49,6 +49,12 @@ public class SampleGridViewActivity extends FragmentActivity {
 
     }
 
+    public void nearbyStreamHandler(View target) {
+        Intent intent = new Intent(this, NearbyActivity.class);
+        startActivity(intent);
+    }
+
+
     public void searchBtnHandler(View target) {
 
         Boolean nearby = ((Button) target).getText().toString().contains("Nearby");

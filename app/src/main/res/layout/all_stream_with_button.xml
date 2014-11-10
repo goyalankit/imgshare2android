@@ -52,6 +52,13 @@
                 android:text="My Subscibed Streams"
                 android:onClick="mySubStreamsHandler"/>
 
+            <Button
+                android:id="@+id/nearbystream"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nearby Streams"
+                android:onClick="nearbyStreamHandler"/>
+
 
         </LinearLayout>
     </LinearLayout>
