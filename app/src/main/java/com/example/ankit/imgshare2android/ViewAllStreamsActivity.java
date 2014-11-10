@@ -60,7 +60,6 @@ public class ViewAllStreamsActivity extends Activity {
                     CachedStreams.allStreams.addAll(CachedStreams.ownStreams);
                     CachedStreams.allStreams.addAll(CachedStreams.subStreams);
 
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 } finally {
